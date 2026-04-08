@@ -1,0 +1,42 @@
+To check images present locally - docker images
+To check all the running containers - docker ps
+To pull any image from repository to local -  docker pull imageName
+We don't need to docker pull separately. docker run automatically pulls the image and starts container if it's not already on our machine - docker run postgres:16
+Can run same application of multiple versions without any conflict.
+Sequence-
+      docker pull redis
+      docker run redis
+      docker run -d redis
+Restart a container(maybe crashed or something like that)-
+ 
+docker stop 8453671ndg43(id of the container)
+
+If we again start the container -
+
+docker start 789y67894rr(id of the container)
+
+To check container history(If we open laptop the next day and can’t find anything)- 
+
+      docker ps -a (lists running and stopped container)
+ 
+We will get the lists with container ids and then we can restart it again with the help of the ids. 
+
+Suppose we want to run same application with diff versions in same time/diff time. Ex: Redis 
+ 
+ docker run redis:4.0
+
+There are two types of ports - container port and machine port. In order to run the application,they must be binded.
+Now containers can have same port number,but machine port can’t be same. Below are the commands to bind same application of diff versions,having same container port numbers to host port.
+
+
+
+
+
+docker run -p6000:6379 redis
+
+
+Where p=port
+6000=machine port no
+6379=container port no
+
+
